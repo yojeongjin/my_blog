@@ -72,10 +72,10 @@ display: flex;
 `
 
 const Logo = styled.div`
-flex: 1;
 display: flex;
-justify-content: start;
+justify-content: center;
 align-items: center;
+flex: 1;
 font-weight: 700;
 font-size: 20px;
 `

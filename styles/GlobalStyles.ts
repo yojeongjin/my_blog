@@ -21,10 +21,6 @@ const GlobalStyles = createGlobalStyle`
     vertical-align: baseline;
     font-family: 'Noto Sans KR', sans-serif;
   }
-  
-  body {
-    background-color: #f8f9fd;
-  }
   a {
     text-decoration: none;
   }
