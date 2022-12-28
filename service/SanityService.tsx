@@ -9,20 +9,29 @@ export default class SanityService {
 
   async getPosts() {
     return await this._client.fetch(`
-    *[_type == 'post'] {
+    *[_type == 'post']{
       title,
-      'slug': slug.current,
+      period,
+      desc1,
+      desc2,
+      desc3,
       'thumbnail': {
-        'alt': thumbnail.alt,
-        'imagUrl': thumbnail.asset -> url
+      'imgUrl': thumbnail.asset -> url
       },
-      'contents': contents[],
-      'tag': tag -> {
-        title
+      'front': frontTag[] -> {
+        'icon': {
+          'url':image.asset -> url
+          }
+      },
+      'back':backTag[] -> {
+        'icon': {
+          'url':image.asset -> url
+          }      
+        }
       }
-    }
     `)
   }
+  
   async getStacks() {
     return await this._client.fetch(`
     *[_type == 'stacks'] | order(_createdAt asc){
