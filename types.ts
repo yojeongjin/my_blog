@@ -10,3 +10,12 @@ export type PostType = {
     title: string
   }
 }
+
+export type StackType = {
+  title: string,
+  tag: string,
+  image: {
+    imagUrl: string
+  },
+  contents: string
+}

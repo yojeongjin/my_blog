@@ -1,13 +1,17 @@
-import { PostType } from "../types";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { ReactNode } from "react";
 import styled from "styled-components";
 
-interface MainPostProps {
-  post: PostType
+interface LayoutProps {
+  children: ReactNode
 }
 
-export default function MainPost(post: MainPostProps) {
+export default function Layout({children}:LayoutProps) {
+  const  router = useRouter()
   return (
     <MainPostBase>
+        <video src="https://assets.codepen.io/3364143/7btrrd.mp4" autoPlay playsInline loop muted />
       <Inner>
         <MainPostContent>
 
@@ -21,7 +25,7 @@ export default function MainPost(post: MainPostProps) {
             <HeaderProfile>
               <Norification>
                 <NorificationNumber>3</NorificationNumber>
-                <svg viewBox="0 0 24 24" fill="#f9fafb" stroke="#f9fafb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style={{width: "24px", height: "24px"}}>
+                <svg viewBox="0 0 24 24" fill="#f9fafb" stroke="#f9fafb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width: "24px", height: "24px"}}>
                   <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" />
                 </svg>
               </Norification>
@@ -30,33 +34,32 @@ export default function MainPost(post: MainPostProps) {
           </PostHeader>
 
           <MainContainer>
+            
             <MainHeader>
               <HeaderMenu>
-                <HeaderItem>Stacks</HeaderItem>
-                <HeaderItem>Projects</HeaderItem>
-                <HeaderItem>About</HeaderItem>
+                <HeaderItem isSelect = {router.pathname === "/"}>
+                  <Link href="/">
+                    Stacks
+                  </Link>
+                </HeaderItem>
+                
+                <HeaderItem isSelect = {router.pathname === "/post"}>
+                  <Link href='/post'>
+                    Projects
+                  </Link>
+                </HeaderItem>
+                <HeaderItem isSelect = {router.pathname === "/about"}>
+                  <Link href='/about'>
+                    About
+                  </Link>
+                </HeaderItem>
               </HeaderMenu>
             </MainHeader>
-          </MainContainer>
+            <ContentWrapper>
+              {children}
+            </ContentWrapper>
 
-          <ContentWrapper>
-            <WrapperHeader>
-              <WrapperContext>
-                <Title>기술 스택 소개</Title>
-                <ContentText>
-                Grab yourself 10 free images from Adobe Stock in a 30-day free trial plan and find perfect image, 
-                that will help you with your new project
-                </ContentText>
-                <ContentBtn>자세히 보기</ContentBtn>
-              </WrapperContext>
-              <ContentWrapperImg 
-              src="https://ssalgu-bucket.s3.ap-northeast-2.amazonaws.com/stacks.webp"
-              alt="기술 이미지" />
-            </WrapperHeader>
-          </ContentWrapper>
-          <ContentSection>
-            <ContetnSectionTitle>Main Skills</ContetnSectionTitle>
-          </ContentSection>
+          </MainContainer>
         </MainPostContent>
       </Inner>
     </MainPostBase>
@@ -64,16 +67,22 @@ export default function MainPost(post: MainPostProps) {
 }
 
 const MainPostBase = styled.main`
-margin-top: 50px;
-position: fixed;
-right: 0;
-top: 0;
-width: 100%;
-height: 100%;
+display: flex;
+align-items: center;
+overflow: hidden;
+height: 100vh;
+> video {
+  position: fixed;
+  right: 0;
+  top: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
 `
 
 const Inner = styled.div`
-width: 1100px;
+width: 1200px;
 margin: 0 auto;
 `
 
@@ -81,10 +90,10 @@ const MainPostContent = styled.div`
 background-color: ${(props) => props.theme.bgColor};
 position: relative;
 width: 100%;
-height: 80vh;
+height: 93vh;
 display: flex;
 flex-direction: column;
-overflow: hidden;
+overflow-y: scroll;
 border-radius: 14px;
 backdrop-filter: blur(20px);
 -webkit-backdrop-filter: blur(20px);
@@ -193,17 +202,17 @@ const HeaderMenu = styled.ul`
 display: flex;
 `
 
-const HeaderItem = styled.li`
+
+const HeaderItem = styled.li<{isSelect:boolean}>`
 padding: 20px 40px;
-color: ${(props) => props.theme.inactiveColor};
-border-bottom: 2px solid transparent;
+color: ${(props) => props.isSelect ? "#f9fafb" : "#717790c7" };
+border-bottom: ${(props) => props.isSelect ? "2px solid #f9fafb" : "2px solid transparent;" };
 transition: 0.3s;
 &:hover {
   color: ${(props) => props.theme.themeColor};
   border-bottom: 2px solid ${(props) => props.theme.themeColor};
 }
 `
-
 const ContentWrapper = styled.div`
 background-color: ${(props) => props.theme.bgColor};
 display: flex;
@@ -212,81 +221,4 @@ color: ${(props) => props.theme.themeColor};
 padding: 20px 40px;
 height: 100%;
 overflow: auto;
-`
-const WrapperHeader = styled.div`
-display: flex;
-align-items: center;
-width: 100%;
-justify-content: space-between;
-background-image: url("https://www.transparenttextures.com/patterns/cubes.png"),
-linear-gradient(
- to right top,
- #cf4af3,
- #e73bd7,
- #f631bc,
- #fd31a2,
- #ff3a8b,
- #ff4b78,
- #ff5e68,
- #ff705c,
- #ff8c51,
- #ffaa49,
- #ffc848,
- #ffe652
-);
-border-radius: 14px;
-padding: 20px 40px;
-`
-
-const WrapperContext = styled.div`
-max-width: 350px;
-`
-const Title = styled.h3`
-font-weight: 500;
-font-size: 17px;
-display: flex;
-align-items: center;
-margin: 0;
-`
-
-const ContentText = styled.div`
-font-weight: 400;
-font-size: 14px;
-margin-top: 16px;
-line-height: 1.7em;
-color: #ebecec;
-display: -webkit-box;
--webkit-line-clamp: 4;
--webkit-box-orient: vertical;
-overflow: hidden;
-text-overflow: ellipsis;
-`
-
-const ContentBtn = styled.button`
-background-color: #3a6df0;
-border: none;
-padding: 8px 26px;
-color: #fff;
-border-radius: 20px;
-margin-top: 16px;
-cursor: pointer;
-transition: 0.3s;
-white-space: nowrap;
-`
-
-const ContentWrapperImg = styled.img`
-width: 186px;
-object-fit: cover;
-margin-top: -25px;
-object-position: center;
-`
-
-const ContentSection = styled.div`
-margin-top: 30px;
-display: flex;
-flex-direction: column;
-`
-const ContetnSectionTitle = styled.div`
-color: ${(props) => props.theme.contentTitleColor};
-margin-bottom: 14px;
 `

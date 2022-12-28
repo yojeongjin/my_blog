@@ -1,36 +1,24 @@
 import { GetStaticProps } from "next";
 import SanityService from "../service/SanityService";
-import MainPost from "../components/MainPost";
-import type { PostType } from "../types";
-import styled from "styled-components";
+import StacksSection from "../components/StacksSection";
+import type { StackType } from "../types";
+import Layout from "../components/Layout";
 
-export default function Home({post}) {
+export default function Home({stack}) {
   return (
-    <HomeBase>
-      <video src="https://assets.codepen.io/3364143/7btrrd.mp4" autoPlay playsInline loop muted />
-      <MainPost {...post} />
-    </HomeBase>
+    <Layout>
+      <StacksSection stack={stack} />
+    </Layout>
   )
 }
 
 
 export const getStaticProps: GetStaticProps = async() => {
-  const post: PostType = await new SanityService().getPosts()
+  const stack: StackType = await new SanityService().getStacks()
 
   return {
     props: {
-      post
+      stack
     }
   }
 }
-
-
-const HomeBase = styled.div`
-overflow: hidden;
-height: 100vh;
-> video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-`

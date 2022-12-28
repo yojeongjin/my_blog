@@ -23,4 +23,16 @@ export default class SanityService {
     }
     `)
   }
+  async getStacks() {
+    return await this._client.fetch(`
+    *[_type == 'stacks'] | order(_createdAt asc){
+      title,
+      'image': {
+        'imagUrl': image.asset -> url
+      },
+      'contents': contents[0].children[0].text,
+      tag
+    }
+    `)
+  }
 }
