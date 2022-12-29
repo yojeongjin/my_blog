@@ -15,30 +15,22 @@ export default class SanityService {
       desc1,
       desc2,
       desc3,
-      'thumbnail': {
-      'imgUrl': thumbnail.asset -> url
-      },
-      'front': frontTag[] -> {
-        'icon': {
-          'url':image.asset -> url
-          }
-      },
-      'back':backTag[] -> {
-        'icon': {
-          'url':image.asset -> url
-          }      
-        }
+      'slug': slug.current,
+      'contents': contents[0].children[0].text,
+      'thumbnail': thumbnail.asset -> url,
+      'front': frontTag[] -> image.asset -> url
+      ,
+      'back':backTag[] -> image.asset -> url  
       }
     `)
   }
   
+
   async getStacks() {
     return await this._client.fetch(`
     *[_type == 'stacks'] | order(_createdAt asc){
       title,
-      'image': {
-        'imagUrl': image.asset -> url
-      },
+      'image': image.asset -> url,
       'contents': contents[0].children[0].text,
       tag
     }

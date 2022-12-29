@@ -12,7 +12,7 @@ export default function StacksSection({stack}: StackProps) {
   const StackDetail = frontArray.map((front) => (
     <ContentItem key={front.title}>
       <Stacks>
-        <StacksIcon src={front.image.imagUrl} alt="아이콘" />
+        <StacksIcon src={front.image} alt="아이콘" />
         {front.title}
       </Stacks>
       <Category>
@@ -35,7 +35,7 @@ export default function StacksSection({stack}: StackProps) {
       <div style={{display: "flex", alignItems: "center"}}>
         <ImgWrapper>
           <StacksIcon 
-          src={back.image.imagUrl} alt="아이콘"
+          src={back.image} alt="아이콘"
           style={{margin: "0 auto"}}
           />
         </ImgWrapper>
@@ -65,7 +65,6 @@ export default function StacksSection({stack}: StackProps) {
       </WrapperHeader>
 
       <ContentSection>
-        <ContetnSectionTitle>Frontend</ContetnSectionTitle>
         <ContentList>
           {StackDetail}
         </ContentList>
@@ -156,10 +155,7 @@ padding: 0 10px;
 display: flex;
 flex-direction: column;
 `
-const ContetnSectionTitle = styled.div`
-color: ${(props) => props.theme.contentTitleColor};
-margin-bottom: 14px;
-`
+
 const ContentList = styled.ul`
 display: flex;
 flex-direction: column;
