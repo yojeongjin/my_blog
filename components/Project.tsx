@@ -7,7 +7,7 @@ interface ProjectProps {
 }
 
 export default function Project({project}: ProjectProps) {
-  console.log(project)
+
   const ProjectDetail = 
   project.map((project) => (
     <ProjectCardWrap key={project.title}>
@@ -61,8 +61,8 @@ display: flex;
 align-items: center;
 justify-content: center;
 flex-direction: column;
-
 `
+
 const ContetnSectionTitle = styled.div`
 color: ${(props) => props.theme.contentTitleColor};
 margin-bottom: 14px;
