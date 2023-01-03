@@ -4,22 +4,26 @@ import Layout from "../../components/Layout"
 import ProjectDetail from "../../components/ProjectDetail"
 
 
-export default function ProjectAll() {
+export default function ProjectAll({projectDatas}) {
+  // const imgArr = projectDatas.contentImage.map((img:any) => {
+  //   return img.url
+  // })
+  // let imgUrl = imgArr.filter((element) => element !== undefined)
 
   return (
     <Layout>
-      <ProjectDetail />
+      <ProjectDetail projectDatas={projectDatas} impression={projectDatas.impression} />
     </Layout>
   )
 }
 
 
 export const getStaticPaths: GetStaticPaths = async() => {
-  const posts = await new SanityService().getPosts()
+  const projects = await new SanityService().getProject()
 
-  const paths = posts.map(post => ({
+  const paths = projects.map(project => ({
     params: {
-      slug: post.slug
+      slug: project.slug
     }
   }))
   return {
@@ -28,12 +32,14 @@ export const getStaticPaths: GetStaticPaths = async() => {
   }
 }
 
-export const getStaticProps: GetStaticProps = ({params}) => {
+export const getStaticProps: GetStaticProps = async({params}) => {
   const { slug } = params!
+  const projects  = await new SanityService().getProject()
+  const projectDatas = projects.find(p => p.slug === slug)
 
   return {
     props: {
-      slug
+      projectDatas
     }
   }
 }
