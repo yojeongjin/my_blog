@@ -18,6 +18,17 @@ export type ProjectDetailType = {
   des: []
 }
 
+export type ArcadeType = {
+  title: string,
+  slug: string,
+  period: string,
+  desc1: string,
+  desc2: string,
+  desc3: string,
+  thumbnail: string,
+  front: string[]
+}
+
 export type PostType = {
   title: string,
   slug: string,

@@ -9,7 +9,6 @@ interface DetailProps {
 }
 
 export default function ProjectDetail({projectDatas, impression}: DetailProps) {
-  console.log(projectDatas)
   return (
   <ContentSection>
     <ProjectLogo>
@@ -137,10 +136,15 @@ const DetailImg = styled.img`
 `
 
 const ProjectLogo = styled.div`
-height: 200px;
 display: flex;
 align-items: center;
 justify-content: center;
+width: 80%;
+
+
+${DetailImg} {
+  width: 100%;
+}
 `
 
 const ProjectSubTitle = styled.div`

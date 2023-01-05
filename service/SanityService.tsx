@@ -43,8 +43,7 @@ export default class SanityService {
       desc1,
       desc2,
       desc3,
-      'slug': slug.current,
-      'contents': contents[0].children[0].text,
+      'slug': slug,
       'thumbnail': thumbnail.asset -> url,
       'front': frontTag[] -> image.asset -> url
       ,
@@ -52,8 +51,22 @@ export default class SanityService {
       }
     `)
   }
-  
 
+  async getArcade() {
+    return await this._client.fetch(`
+    *[_type == 'arcade']{
+      title,
+      period,
+      desc1,
+      desc2,
+      desc3,
+      'slug': slug.current,
+      'thumbnail': thumbnail.asset -> url,
+      'front': frontTag[] -> image.asset -> url
+      }
+    `)
+  }
+  
   async getStacks() {
     return await this._client.fetch(`
     *[_type == 'stacks'] | order(_createdAt asc){

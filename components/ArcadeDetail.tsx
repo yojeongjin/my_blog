@@ -1,63 +1,39 @@
-import Link from "next/link"
 import styled from "styled-components"
-import { PostType } from "../types"
 
-interface ProjectProps {
-  project: PostType[]
-}
+export default function ArcadeDetail({arcade}) {
 
-export default function Project({project}: ProjectProps) {
-  const ProjectDetail = 
-  project.map((project, index) => (
+  const ArcadeDetail = 
+  arcade.map((arcade, index) => (
     <ProjectCardWrap key={index}>
-      {
-        project.slug === 'arcade' ?
-        <Link href='/arcade'>
-          <ProjectImgWrap>
-            <ProjectImg src={project.thumbnail} alt="썸네일" />
-          </ProjectImgWrap>
-        </Link>
-        :
-        <Link href={`/project/${project.slug}`}>
-          <ProjectImgWrap>
-            <ProjectImg src={project.thumbnail} alt="썸네일" />
-          </ProjectImgWrap>
-        </Link>
-      }
+
+      <ProjectImgWrap>
+        <ProjectImg src={arcade.thumbnail} alt="썸네일" />
+      </ProjectImgWrap>
+
       <ProjectDescription>
         <Title>
-          {project.title}
-          <SubTitle>{project.period}</SubTitle>
+        {arcade.title}
+          <SubTitle>{arcade.period}</SubTitle>
         </Title>
         <StackIconWrap>
-          <div>
           {
-            project.front.map((badge) => (
-              <StackIcon key={badge} src={badge} alt="뱃지" />
+            arcade.front.map((badge,idx) => (
+              <StackIcon key={idx} src={badge} alt="뱃지" />
             ))
           }
-          </div>
-          <div>
-          {
-            project.back.map((badge) => (
-              <StackIcon key={badge} src={badge} alt="뱃지" />
-            ))
-          }
-          </div>
         </StackIconWrap>
         <Description>
-          {project.desc1} <br></br>
-          {project.desc2} <br></br>
-          {project.desc3}
+          {arcade.desc1} <br></br>
+          {arcade.desc2} <br></br>
+          {arcade.desc3}
         </Description>
       </ProjectDescription>
-    </ProjectCardWrap>
+  </ProjectCardWrap>
   ))
-
   return (
     <ContentSection>
       {/* <ContetnSectionTitle>각 썸네일을 클릭하면 자세히 볼 수 있어요!</ContetnSectionTitle> */}
-      {ProjectDetail}
+      {ArcadeDetail}
     </ContentSection>
   )
 }
@@ -109,7 +85,7 @@ margin: 12px 0 0 15px;
 const Description = styled.div`
 font-size: 14px;
 font-weight: 400;
-line-height: 1.5;
+line-height: 1.7;
 margin-top: 20px;
 padding-bottom: 10px;
 `
