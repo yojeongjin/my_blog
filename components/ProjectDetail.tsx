@@ -30,6 +30,13 @@ export default function ProjectDetail({projectDatas, impression}: DetailProps) {
         >📎 
           <LinkSpan>{projectDatas.title} 바로가기</LinkSpan>
         </Link>
+        <Link 
+        href={projectDatas.link2} 
+        style={{display: "flex"}}
+        target="_blank" rel="noreferrer"
+        >📎 
+          <LinkSpan>Github 바로가기</LinkSpan>
+        </Link>
       </TextWrap>
 
     </Content>
@@ -170,6 +177,7 @@ const TextWrap = styled.div`
 padding: 13px 25px;
 font-size: 14px;
 font-weight: 400;
+line-height: 1.5;
 `
 
 const Description = styled.p`

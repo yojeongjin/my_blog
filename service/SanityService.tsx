@@ -54,12 +54,15 @@ export default class SanityService {
 
   async getArcade() {
     return await this._client.fetch(`
-    *[_type == 'arcade']{
+    *[_type == 'arcade'] | order(_createdAt asc) {
       title,
       period,
       desc1,
       desc2,
       desc3,
+      link1,
+      link2,
+      'contents': contents[],
       'slug': slug.current,
       'thumbnail': thumbnail.asset -> url,
       'front': frontTag[] -> image.asset -> url

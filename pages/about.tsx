@@ -1,6 +1,10 @@
-
+import AboutDetail from "../components/AboutDetail"
+import Layout from "../components/Layout"
 
 export default function About() {
-  return 
-  <div>Project</div>
+  return (
+    <Layout>
+      <AboutDetail />
+    </Layout>
+  )
 }

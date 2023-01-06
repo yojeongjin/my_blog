@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import Link from "next/link"
+import BlockContent from "@sanity/block-content-to-react"
 
 export default function ArcadeDetail({arcade}) {
 
@@ -21,6 +23,20 @@ export default function ArcadeDetail({arcade}) {
               <StackIcon key={idx} src={badge} alt="뱃지" />
             ))
           }
+          <TextWrap>
+            <Link
+            href={arcade.link1} 
+            style={{display: "flex"}}
+            target="_blank" rel="noreferrer">📎
+              <LinkSpan>{arcade.title} 바로가기</LinkSpan>
+            </Link>
+            <Link
+            href={arcade.link2} 
+            style={{display: "flex"}}
+            target="_blank" rel="noreferrer">📎
+              <LinkSpan>Github 바로가기</LinkSpan>
+            </Link>
+          </TextWrap>
         </StackIconWrap>
         <Description>
           {arcade.desc1} <br></br>
@@ -32,7 +48,9 @@ export default function ArcadeDetail({arcade}) {
   ))
   return (
     <ContentSection>
-      {/* <ContetnSectionTitle>각 썸네일을 클릭하면 자세히 볼 수 있어요!</ContetnSectionTitle> */}
+      <ContetnSectionTitle>
+        <BlockContent blocks={arcade[0].contents} projectId="te7gy4v3" dataset="production" />
+      </ContetnSectionTitle>
       {ArcadeDetail}
     </ContentSection>
   )
@@ -49,21 +67,24 @@ flex-direction: column;
 
 const ContetnSectionTitle = styled.div`
 color: ${(props) => props.theme.contentTitleColor};
-margin-bottom: 14px;
+margin-bottom: 30px;
+width: 90%;
 `
 
 const ProjectCardWrap = styled.div`
 display: flex;
 align-items: center;
 width: 1100px;
-height: 300px;
+height: 400px;
 margin-bottom: 30px;
 `
 
 const ProjectDescription = styled.div`
 width: 550px;
-height: 95%;
+height: 100%;
 display: flex;
+align-items: start;
+justify-content: center;
 flex-direction: column;
 border-radius: 14px;
 padding: 20px;
@@ -96,6 +117,17 @@ border-bottom: 1px solid  ${(props) => props.theme.borderColor};
 `
 const StackIcon = styled.img`
 margin: 0 7px 7px 0;
+`
+const TextWrap = styled.div`
+font-size: 14px;
+font-weight: 400;
+`
+
+const LinkSpan = styled.span`
+display: block;
+padding: 4px 5px;
+color: #aaa;
+text-decoration: underline;
 `
 
 const ProjectImgWrap = styled.div`

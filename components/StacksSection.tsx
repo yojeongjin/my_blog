@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styled from "styled-components";
 import { StackType } from "../types";
 
@@ -52,12 +53,19 @@ export default function StacksSection({stack}: StackProps) {
     <>
       <WrapperHeader>
         <WrapperContext>
-          <Title>기술 스택 소개</Title>
           <ContentText>
-          Grab yourself 10 free images from Adobe Stock in a 30-day free trial plan and find perfect image, 
-          that will help you with your new project
+          <em style={{fontWeight: "bold", fontSize: "15px"}}>‘이게 최선입니까? 확실해요?’</em> <br></br>
+          코드를 작성 할 때마다 유명 드라마 나온 이 대사를 되뇌입니다.<br></br>
+          지금 내가 친 코드가 제대로 된 코드인지 더 나은 코드는 없는지 끊임없이 생각합니다.<br></br>
+          <br></br>
+          단순히 <em style={{fontWeight: "bold", fontSize: "15px"}}>‘기능을 구현하는 사람’</em> 보다는 <em style={{fontWeight: "bold", fontSize: "15px"}}>‘코드를 작성하는 사람’</em>이 되고 싶은 개발자입니다. <br></br>
+          끊임없이 공부하고 성실하게 쌓은 지식으로 실질적인 도움이 되는 개발자로 일하고싶습니다.
           </ContentText>
-          <ContentBtn>자세히 보기</ContentBtn>
+          <ContentBtn>
+            <Link href='/about'>
+            자세히 보기
+            </Link>
+          </ContentBtn>
         </WrapperContext>
         <ContentWrapperImg 
         src="https://ssalgu-bucket.s3.ap-northeast-2.amazonaws.com/stacks.webp"
@@ -103,29 +111,19 @@ linear-gradient(
  #ffe652
 );
 border-radius: 14px;
-padding: 20px 40px;
+padding: 20px 80px;
 `
 
 const WrapperContext = styled.div`
-max-width: 350px;
-`
-const Title = styled.h3`
-font-weight: 500;
-font-size: 17px;
-display: flex;
-align-items: center;
-margin: 0;
+max-width: 550px;
 `
 
 const ContentText = styled.div`
 font-weight: 400;
 font-size: 14px;
 margin-top: 16px;
-line-height: 1.7em;
+line-height: 1.7;
 color: #ebecec;
-display: -webkit-box;
--webkit-line-clamp: 4;
--webkit-box-orient: vertical;
 overflow: hidden;
 text-overflow: ellipsis;
 `
@@ -266,9 +264,10 @@ transition: 0.3s ease;
 `
 
 const CardText = styled.div`
+height: 80px;
 font-size: 14px;
 font-weight: 400;
-line-height: 1.6em;
+line-height: 1.5;
 margin-top: 20px;
 border-bottom: 1px solid  ${(props) => props.theme.borderColor};
 padding-bottom: 20px;
