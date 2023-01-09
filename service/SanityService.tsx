@@ -85,7 +85,9 @@ export default class SanityService {
       title,
       'image': image.asset -> url,
       'contents': contents[0].children[0].text,
-      tag
+      tag,
+      des1,
+      des2
     }
     `)
   }

@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { useState } from "react";
 import styled from "styled-components";
 import { StackType } from "../types";
+import Layout from "./Layout";
+import Modal from "./Modal";
 
 interface StackProps {
   stack: StackType[]
@@ -9,6 +12,21 @@ interface StackProps {
 export default function StacksSection({stack}: StackProps) {
   const frontArray = stack.filter(el=>el.tag=='Frontend')
   const backArray = stack.filter(el=>el.tag=='Backend')
+  
+  const [ openModal, setOpenModal ] = useState<boolean>(false)
+  const [ stackContents, setStackContents ] = useState<StackType>({
+    title: '',
+    des1: '',
+    des2: '',
+    contents: '',
+    image: '',
+    tag: '',
+  })
+
+  const showModal = (back) => {
+    setOpenModal(true)
+    setStackContents(back)
+  } 
 
   const StackDetail = frontArray.map((front) => (
     <ContentItem key={front.title}>
@@ -43,51 +61,58 @@ export default function StacksSection({stack}: StackProps) {
         {back.title}
       </div>
       <CardText>{back.contents}</CardText>
-      <CartBtn>
+      <CardBtn onClick={()=>{showModal(back)}}>
         <ContentBtn>자세히 보기</ContentBtn>
-      </CartBtn>
+      </CardBtn>
     </StackCard>
   ))
 
   return (
     <>
-      <WrapperHeader>
-        <WrapperContext>
-          <ContentText>
-          <em style={{fontWeight: "bold", fontSize: "15px"}}>‘이게 최선입니까? 확실해요?’</em> <br></br>
-          코드를 작성 할 때마다 유명 드라마 나온 이 대사를 되뇌입니다.<br></br>
-          지금 내가 친 코드가 제대로 된 코드인지 더 나은 코드는 없는지 끊임없이 생각합니다.<br></br>
-          <br></br>
-          단순히 <em style={{fontWeight: "bold", fontSize: "15px"}}>‘기능을 구현하는 사람’</em> 보다는 <em style={{fontWeight: "bold", fontSize: "15px"}}>‘코드를 작성하는 사람’</em>이 되고 싶은 개발자입니다. <br></br>
-          끊임없이 공부하고 성실하게 쌓은 지식으로 실질적인 도움이 되는 개발자로 일하고싶습니다.
-          </ContentText>
-          <ContentBtn>
-            <Link href='/about'>
-            자세히 보기
-            </Link>
-          </ContentBtn>
-        </WrapperContext>
-        <ContentWrapperImg 
-        src="https://ssalgu-bucket.s3.ap-northeast-2.amazonaws.com/stacks.webp"
-        alt="기술 이미지" />
-      </WrapperHeader>
+      <Layout>
+        <WrapperHeader>
+          <WrapperContext>
+            <ContentText>
+            <em style={{fontWeight: "bold", fontSize: "15px"}}>‘이게 최선입니까? 확실해요?’</em> <br></br>
+            코드를 작성 할 때마다 유명 드라마 나온 이 대사를 되뇌입니다.<br></br>
+            지금 내가 친 코드가 제대로 된 코드인지 더 나은 코드는 없는지 끊임없이 생각합니다.<br></br>
+            <br></br>
+            단순히 <em style={{fontWeight: "bold", fontSize: "15px"}}>‘기능을 구현하는 사람’</em> 보다는 <em style={{fontWeight: "bold", fontSize: "15px"}}>‘코드를 작성하는 사람’</em>이 되고 싶은 개발자입니다. <br></br>
+            끊임없이 공부하고 성실하게 쌓은 지식으로 실질적인 도움이 되는 개발자로 일하고싶습니다.
+            </ContentText>
+            <ContentBtn>
+              <Link href='/about'>
+              자세히 보기
+              </Link>
+            </ContentBtn>
+          </WrapperContext>
+          <ContentWrapperImg 
+          src="https://ssalgu-bucket.s3.ap-northeast-2.amazonaws.com/stacks.webp"
+          alt="기술 이미지" />
+        </WrapperHeader>
 
-      <ContentSection>
-        <ContentList>
-          {StackDetail}
-        </ContentList>
-      </ContentSection>
+        <ContentSection>
+          <ContentList>
+            {StackDetail}
+          </ContentList>
+        </ContentSection>
 
-      <ContentSection>
-        <StackCardWrap>
-          {AnotherDetail}
-        </StackCardWrap>
-      </ContentSection>
+        <ContentSection>
+          <StackCardWrap>
+            {AnotherDetail}
+          </StackCardWrap>
+        </ContentSection>
+      </Layout>
 
+      {
+        openModal &&
+        <Modal setOpenModal={setOpenModal} stackContents={stackContents}/>
+      }
+
+      {/* <Modal setOpenModal={setOpenModal} stackContents={stackContents}/> */}
     </>
   )
 }
-
 
 const WrapperHeader = styled.div`
 display: flex;
@@ -255,7 +280,6 @@ border-radius: 14px;
 border: 1px solid ${(props) => props.theme.bgColor};
 padding: 20px;
 margin: 0 0 8px 15px;
-cursor: pointer;
 transition: 0.3s ease;
 &:hover {
   transform: scale(1.02);
@@ -273,7 +297,7 @@ border-bottom: 1px solid  ${(props) => props.theme.borderColor};
 padding-bottom: 20px;
 `
 
-const CartBtn = styled.div`
+const CardBtn = styled.div`
 display: flex;
 align-items: center;
 margin-left: auto;

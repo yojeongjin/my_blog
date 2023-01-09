@@ -46,5 +46,7 @@ export type StackType = {
   title: string,
   tag: string,
   image: string,
-  contents: string
+  contents: string,
+  des1: string
+  des2: string
 }
