@@ -18,18 +18,26 @@ export default function Layout({children}:LayoutProps) {
           <PostHeader>
             <MenuCircle></MenuCircle>
 
-            <SearchBar>
-              <Input type="text" placeholder="Search" />
-            </SearchBar>
-
             <HeaderProfile>
-              <Norification>
-                <NorificationNumber>3</NorificationNumber>
-                <svg viewBox="0 0 24 24" fill="#f9fafb" stroke="#f9fafb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width: "24px", height: "24px"}}>
-                  <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" />
+              <LinkWrap>
+                <svg viewBox="0 0 20 20" fill="#f9fafb">
+                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
                 </svg>
-              </Norification>
-              <ProfileImg />
+              </LinkWrap>
+              <LinkWrap>
+                <svg fill="#f9fafb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width: "24px", height: "24px"}} viewBox="0 0 24 24">
+                  <path d="M3 0C1.338 0 0 1.338 0 3v18c0 1.662 1.338 3 3 3h18c1.662 0 3-1.338 3-3V3c0-1.662-1.338-3-3-3H3Zm6.883 6.25c.63 0 1.005.3 1.125.9l1.463 8.303c.465-.615.846-1.133 1.146-1.553.465-.66.893-1.418 1.283-2.273.405-.855.608-1.62.608-2.295 0-.405-.113-.727-.338-.967-.21-.255-.608-.577-1.193-.967.6-.765 1.35-1.148 2.25-1.148.48 0 .878.143 1.193.428.33.285.494.704.494 1.26 0 .93-.39 2.093-1.17 3.488-.765 1.38-2.241 3.457-4.431 6.232l-2.227.156-1.711-9.628h-2.25V7.24c.6-.195 1.305-.406 2.115-.63.81-.24 1.358-.36 1.643-.36Z">
+                  </path>
+                </svg>
+              </LinkWrap>
+              <LinkWrap>
+                <svg fill="#f9fafb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd">
+                  </path>
+                </svg>
+              </LinkWrap>
+              <ProfileImg src="https://ssalgu-bucket.s3.ap-northeast-2.amazonaws.com/AgileThisBluebottle-size_restricted.gif" alt="프로필이미지" />
             </HeaderProfile>
           </PostHeader>
 
@@ -122,57 +130,23 @@ margin-right: 195px;
 flex-shrink: 0;
 `
 
-const SearchBar = styled.div`
-width: 100%;
-height: 40px;
-max-width: 400px;
-display: flex;
-margin: 0 auto;
-border-radius: 4px;
-`
-const Input = styled.input`
-width: 100%;
-height: 100%;
-border: none;
-background-color: ${(props) => props.theme.searchBg};
-border-radius: 4px;
-font-size: 15px;
-font-weight: 500;
-padding: 0 20px 0 40px;
-box-shadow: 0 0 0 2px rgb(134 140 160 / 2%);
-background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56.966 56.966' fill='%23717790c7'%3e%3cpath d='M55.146 51.887L41.588 37.786A22.926 22.926 0 0046.984 23c0-12.682-10.318-23-23-23s-23 10.318-23 23 10.318 23 23 23c4.761 0 9.298-1.436 13.177-4.162l13.661 14.208c.571.593 1.339.92 2.162.92.779 0 1.518-.297 2.079-.837a3.004 3.004 0 00.083-4.242zM23.984 6c9.374 0 17 7.626 17 17s-7.626 17-17 17-17-7.626-17-17 7.626-17 17-17z'/%3e%3c/svg%3e");
-background-size: 14px;
-background-repeat: no-repeat;
-background-position: 16px 48%;
-color: ${(props) => props.theme.themeColor};
-`
-
 const HeaderProfile = styled.div`
 display: flex;
 align-items: center;
 padding: 0 16px 0 40px;
 margin-left: auto;
 flex-shrink: 0;
-
 `
 
-const Norification = styled.div`
-position: relative;
-`
-const NorificationNumber = styled.span`
-position: absolute;
-background-color: #3a6df0;
-width: 16px;
-height: 16px;
-border-radius: 50%;
-font-size: 10px;
+const LinkWrap = styled.div`
+width: 32px;
+height: 32px;
 display: flex;
 align-items: center;
 justify-content: center;
-color: #fff;
-right: -6px;
-top: -6px;
+margin-left: 7px;
 `
+
 
 const ProfileImg = styled.img`
 width: 32px;
