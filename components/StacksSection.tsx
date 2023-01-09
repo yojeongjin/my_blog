@@ -12,7 +12,9 @@ interface StackProps {
 export default function StacksSection({stack}: StackProps) {
   const frontArray = stack.filter(el=>el.tag=='Frontend')
   const backArray = stack.filter(el=>el.tag=='Backend')
-  
+
+  const [ dropDown, setDropDown ] = useState<boolean>(false)
+  const [ dropIdx, setDropIdx ] = useState<number>(null)
   const [ openModal, setOpenModal ] = useState<boolean>(false)
   const [ stackContents, setStackContents ] = useState<StackType>({
     title: '',
@@ -23,13 +25,18 @@ export default function StacksSection({stack}: StackProps) {
     tag: '',
   })
 
-  const showModal = (back) => {
+  const showModal = (content) => {
     setOpenModal(true)
-    setStackContents(back)
+    setStackContents(content)
   } 
 
-  const StackDetail = frontArray.map((front) => (
-    <ContentItem key={front.title}>
+  const dropHandler = (idx) => {
+    setDropIdx(idx)
+    setDropDown(!dropDown)
+  }
+
+  const StackDetail = frontArray.map((front,idx) => (
+    <ContentItem key={idx}>
       <Stacks>
         <StacksIcon src={front.image} alt="아이콘" />
         {front.title}
@@ -37,12 +44,10 @@ export default function StacksSection({stack}: StackProps) {
       <Category>
         {front.contents}
       </Category>
-      <DropDownWrap>
+      <DropDownWrap onClick={()=>dropHandler(idx)}>
         <DropDownMenu>
-          <DropDown>
-            {/* <ul>
-              <li>더 보기</li>
-            </ul> */}
+          <DropDown drop={dropDown && dropIdx === idx} onClick={() => {showModal(front)}}> 
+            더 보기 
           </DropDown>
         </DropDownMenu>
       </DropDownWrap>
@@ -240,6 +245,8 @@ const DropDownWrap = styled.div`
 width: 5%;
 display: flex;
 justify-content: flex-end;
+padding: 7px 0;
+
 `
 
 const DropDownMenu = styled.div`
@@ -251,16 +258,19 @@ box-shadow: 7px 0 0 0 ${(props) => props.theme.buttonInactive}, 14px 0 0 0 ${(pr
 margin: 0 12px;
 `
 
-const DropDown = styled.button`
+const DropDown = styled.button<{drop: boolean}>`
 position: relative;
-height: 53px;
-width: 40px;
-top: -24px;
-display: flex;
-left: -5px;
-background: transparent;
-border: none;
-cursor: pointer;
+top: 10px;
+right: 30px;
+padding: 7px 20px;
+border-radius: 15px;
+background: ${(props) => props.theme.dropdownBg};
+transition: all 0.4s ease;
+font-size: 12px;
+display: ${(props) =>  props.drop ? 'show' : 'none'};
+&:hover{
+  background-color: ${(props) => props.theme.dropdownHover};
+}
 `
 
 const StackCardWrap = styled.div`
