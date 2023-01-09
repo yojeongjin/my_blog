@@ -7,6 +7,15 @@ export default class SanityService {
     useCdn: process.env.NODE_ENV === "production"
   })
 
+  async getAbout() {
+    return await this._client.fetch(`
+    *[_type == 'about']{
+      title,
+      'contents': contents[],
+      tag
+      }
+    `)
+  }
   async getProject() {
     return await this._client.fetch(`
     *[_type == 'project']{
