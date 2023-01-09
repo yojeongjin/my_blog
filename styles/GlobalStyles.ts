@@ -21,6 +21,19 @@ const GlobalStyles = createGlobalStyle`
     vertical-align: baseline;
     font-family: 'Noto Sans KR', sans-serif;
   }
+
+  body {
+    background-image: url(https://wallpapershome.com/images/wallpapers/macos-big-sur-1280x720-dark-wwdc-2020-22655.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+  }
+
   a {
     text-decoration: none;
   }

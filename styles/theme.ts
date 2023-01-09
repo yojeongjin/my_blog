@@ -1,5 +1,5 @@
 
-const theme = {
+export const darkTheme = {
   bgColor: "rgba(16 18 27 / 40%)",
   borderColor: "rgba(113 119 144 / 25%)",
   themeColor: "#f9fafb",
@@ -9,11 +9,27 @@ const theme = {
   contentBg: "rgb(146 151 179 / 13%)",
   buttonInactive: "rgb(249 250 251 / 55%)",
   dropdownBg: "#21242d",
-  dropdownHover: "rgb(42 46 60)",
-  popupBg: "rgb(22 25 37)",
-  searchBg:  "#14162b",
-  overlayBg: "rgba(36, 39, 59, 0.3)",
-  scrollbarBg: "rgb(1 2 3 / 40%)"
+  dropdownHover: "#2a2e3c",
+  popupBg: "#161925"
 }
 
-export default theme
+export const lightTheme = {
+  bgColor: "rgb(255 255 255 / 31%)",
+  borderColor: "rgb(255 255 255 / 35%)",
+  themeColor: "#3c3a3a",
+  inactiveColor: "#333333",
+  buttonInactive: "#3c3a3a",
+  dropdownBg: "#f7f7f7",
+  dropdownHover: "#ececec",
+  popupBg: "#fff",
+  hoverMenuBg: "rgba(255 255 255 / 35%)",
+  contentTitleColor: "#3c3a3a",
+  linearGradient: "linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgb(255 255 255 / 45%) 100%)"
+}
+
+export const theme = {
+  darkTheme,
+  lightTheme
+}
+
+export default theme;

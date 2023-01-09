@@ -49,7 +49,7 @@ export default function Modal({setOpenModal, stackContents}: ModalProps) {
         }
 
         <BtnWrapper onClick={closeModal}>
-          <Btn>계속하기</Btn>
+          <Btn>닫기</Btn>
         </BtnWrapper>
       </Popup>
     </ModalBase>
@@ -85,7 +85,7 @@ flex-direction: column;
 
 const PopupTitle = styled.div`
 padding-bottom: 15px;
-border-bottom: 1px solid ${(props) => props.theme.borderColor};
+border-bottom: 1px solid #71779040;
 display: flex;
 justify-content: space-between;
 align-items: center;
@@ -113,7 +113,7 @@ margin-left: auto;
 const Btn = styled.button`
 background-color: #3a6df0;
 padding: 8px 26px;
-color: ${(props) => props.theme.themeColor};
+color: #f9fafb;
 border-radius: 20px;
 margin-top: 16px;
 `
