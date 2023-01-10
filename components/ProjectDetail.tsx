@@ -83,7 +83,7 @@ export default function ProjectDetail({projectDatas, impression}: DetailProps) {
     <ProjectSubTitle>주요기능 미리보기</ProjectSubTitle>
     <Content>
       <TextWrap>
-        <BlockContent blocks={projectDatas.contents} projectId="te7gy4v3" dataset="production" />
+        <BlockContent blocks={projectDatas.contents} projectId={process.env.SANITY_PROJECT_ID} dataset="production" />
       </TextWrap>
 
       <Preview>
@@ -120,7 +120,7 @@ export default function ProjectDetail({projectDatas, impression}: DetailProps) {
     <ProjectSubTitle></ProjectSubTitle>
     <Content>
       <TextWrap>
-        <BlockContent blocks={impression} projectId="te7gy4v3" dataset="production" />
+        <BlockContent blocks={impression} projectId={process.env.SANITY_PROJECT_ID} dataset="production" />
       </TextWrap>
     </Content>
 

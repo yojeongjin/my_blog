@@ -4,6 +4,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true
   },
+  env: {
+    SANITY_PROJECT_ID: 'te7gy4v3'
+  }
 }
 
 module.exports = nextConfig

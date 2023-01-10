@@ -12,7 +12,7 @@ export default function AboutDetail({about}) {
     <Content key={idx} isTag = {tag === idx}>
       <Title>{about.title}</Title>
       <Text>
-        <BlockContent blocks={about.contents} projectId="te7gy4v3" dataset="production" />
+        <BlockContent blocks={about.contents} projectId={process.env.SANITY_PROJECT_ID} dataset="production" />
       </Text>
     </Content>
   ))

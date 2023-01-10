@@ -19,7 +19,7 @@ export default function Layout({children}:LayoutProps) {
 
           <HeaderProfile>
 
-            <Link href="/" target="_blank" rel="noreferrer">
+            <Link href="mailto:dev.osolku@naver.com" target="_blank" rel="noreferrer">
               <LinkWrap>
                 <svg viewBox="0 0 20 20" fill="#f9fafb">
                   <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>

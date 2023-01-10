@@ -49,7 +49,7 @@ export default function ArcadeDetail({arcade}) {
   return (
     <ContentSection>
       <ContetnSectionTitle>
-        <BlockContent blocks={arcade[0].contents} projectId="te7gy4v3" dataset="production" />
+        <BlockContent blocks={arcade[0].contents} projectId={process.env.SANITY_PROJECT_ID} dataset="production" />
       </ContetnSectionTitle>
       {ArcadeDetail}
     </ContentSection>
