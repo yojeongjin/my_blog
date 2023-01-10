@@ -11,8 +11,16 @@ export default function Project({project}: ProjectProps) {
   project.map((project, index) => (
     <ProjectCardWrap key={index}>
       {
-        project.slug === 'arcade' ?
+        project.slug === 'arcade' 
+        ?
         <Link href='/arcade'>
+          <ProjectImgWrap>
+            <ProjectImg src={project.thumbnail} alt="썸네일" />
+          </ProjectImgWrap>
+        </Link>
+        : project.slug === 'portfolio'
+        ?
+        <Link href='/portfolio'>
           <ProjectImgWrap>
             <ProjectImg src={project.thumbnail} alt="썸네일" />
           </ProjectImgWrap>

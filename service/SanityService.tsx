@@ -16,6 +16,27 @@ export default class SanityService {
       }
     `)
   }
+
+  async getPortfolio() {
+    return await this._client.fetch(`
+    *[_type == 'portfolio']{
+      'image': image.asset -> url,
+      'slug': slug.current,
+      title,
+      desc1,
+      link1,
+      link2,
+      'contents': contents[],
+      'tag': tag[] -> image.asset -> url,
+      'des': des[] -> {
+        'subtitle': subtitle,
+        'briefDes1': des,
+        'briefDes2': des2,
+      }
+    }
+    `)
+  }
+
   async getProject() {
     return await this._client.fetch(`
     *[_type == 'project']{
