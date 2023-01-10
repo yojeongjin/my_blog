@@ -102,7 +102,7 @@ transition: all .2s ease-out;
 const Border = styled.div`
 height: 288px;
 width: 1px;
-background-color: #ddd;
+background-color: ${(props) => props.theme.aboutColor};
 opacity: 0.2;
 `
 

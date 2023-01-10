@@ -114,7 +114,6 @@ export default function StacksSection({stack}: StackProps) {
         <Modal setOpenModal={setOpenModal} stackContents={stackContents}/>
       }
 
-      {/* <Modal setOpenModal={setOpenModal} stackContents={stackContents}/> */}
     </>
   )
 }
@@ -246,7 +245,9 @@ width: 5%;
 display: flex;
 justify-content: flex-end;
 padding: 7px 0;
-
+&:hover {
+  scale: 1.1;
+}
 `
 
 const DropDownMenu = styled.div`

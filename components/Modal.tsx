@@ -96,7 +96,7 @@ margin-right: 8px;
 `
 
 const CloseBtn = styled.div`
-
+cursor: pointer;
 `
 
 const ContentWrapper = styled.div`

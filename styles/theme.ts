@@ -10,7 +10,8 @@ export const darkTheme = {
   buttonInactive: "rgb(249 250 251 / 55%)",
   dropdownBg: "#21242d",
   dropdownHover: "#2a2e3c",
-  popupBg: "#161925"
+  popupBg: "#161925",
+  aboutColor: "#ddd"
 }
 
 export const lightTheme = {
@@ -22,9 +23,12 @@ export const lightTheme = {
   dropdownBg: "#f7f7f7",
   dropdownHover: "#ececec",
   popupBg: "#fff",
+  contentBg: "rgb(146 151 179 / 13%)",
   hoverMenuBg: "rgba(255 255 255 / 35%)",
   contentTitleColor: "#3c3a3a",
-  linearGradient: "linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgb(255 255 255 / 45%) 100%)"
+  linearGradient: "linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgb(255 255 255 / 45%) 100%)",
+  saturate: "saturate(3)",
+  aboutColor: "#222"
 }
 
 export const theme = {
