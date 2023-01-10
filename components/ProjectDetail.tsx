@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import Head from "next/head"
 import { ProjectDetailType } from "../types"
 import BlockContent from "@sanity/block-content-to-react"
 import Link from "next/link"
@@ -10,121 +11,128 @@ interface DetailProps {
 
 export default function ProjectDetail({projectDatas, impression}: DetailProps) {
   return (
-  <ContentSection>
-    <ProjectLogo>
-      <DetailImg src={projectDatas.image} alt="로고이미지" />
-    </ProjectLogo>
+    <>
+      <Head>
+        <title>오정진 포트폴리오 | {projectDatas.title}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
 
-    <ProjectSubTitle>{projectDatas.title}</ProjectSubTitle>
-    <Content>
-      <TextWrap>
-        <Description>{projectDatas.desc1}</Description>
-        <Description>💻 개발 기간 : {projectDatas.period}</Description>
-      </TextWrap>
+      <ContentSection>
+        <ProjectLogo>
+          <DetailImg src={projectDatas.image} alt="로고이미지" />
+        </ProjectLogo>
 
-      <TextWrap>
-        <Link 
-        href={projectDatas.link1} 
-        style={{display: "flex"}}
-        target="_blank" rel="noreferrer"
-        >📎 
-          <LinkSpan>{projectDatas.title} 바로가기</LinkSpan>
-        </Link>
-        <Link 
-        href={projectDatas.link2} 
-        style={{display: "flex"}}
-        target="_blank" rel="noreferrer"
-        >📎 
-          <LinkSpan>Github 바로가기</LinkSpan>
-        </Link>
-      </TextWrap>
+        <ProjectSubTitle>{projectDatas.title}</ProjectSubTitle>
+        <Content>
+          <TextWrap>
+            <Description>{projectDatas.desc1}</Description>
+            <Description>💻 개발 기간 : {projectDatas.period}</Description>
+          </TextWrap>
 
-    </Content>
+          <TextWrap>
+            <Link 
+            href={projectDatas.link1} 
+            style={{display: "flex"}}
+            target="_blank" rel="noreferrer"
+            >📎 
+              <LinkSpan>{projectDatas.title} 바로가기</LinkSpan>
+            </Link>
+            <Link 
+            href={projectDatas.link2} 
+            style={{display: "flex"}}
+            target="_blank" rel="noreferrer"
+            >📎 
+              <LinkSpan>Github 바로가기</LinkSpan>
+            </Link>
+          </TextWrap>
 
-    <ProjectSubTitle>프로젝트 기술스택</ProjectSubTitle>
-    <Content>
-      <IconWrap>
-        <StackName>Frontend</StackName>
-        {
-          projectDatas.front.map((front) => (
-            <Icon key={front} src={front} alt="뱃지" />
-          ))
-        }
-      </IconWrap>
+        </Content>
 
-      <IconWrap>
-        <StackName>Backend</StackName>
-        {
-          projectDatas.back.map((back) => (
-            <Icon key={back} src={back} alt="뱃지" />
-          ))
-        }
-      </IconWrap>
+        <ProjectSubTitle>프로젝트 기술스택</ProjectSubTitle>
+        <Content>
+          <IconWrap>
+            <StackName>Frontend</StackName>
+            {
+              projectDatas.front.map((front) => (
+                <Icon key={front} src={front} alt="뱃지" />
+              ))
+            }
+          </IconWrap>
 
-      <IconWrap>
-        <StackName>DataBase</StackName>
-        {
-          projectDatas.db.map((db) => (
-            <Icon key={db} src={db} alt="뱃지" />
-          ))
-        }
-      </IconWrap>
+          <IconWrap>
+            <StackName>Backend</StackName>
+            {
+              projectDatas.back.map((back) => (
+                <Icon key={back} src={back} alt="뱃지" />
+              ))
+            }
+          </IconWrap>
 
-      <IconWrap>
-        <StackName>Hosting</StackName>
-        {
-          projectDatas.hosting.map((hosting) => (
-            <Icon key={hosting} src={hosting} alt="뱃지" />
-          ))
-        }
-      </IconWrap>
-    </Content>
+          <IconWrap>
+            <StackName>DataBase</StackName>
+            {
+              projectDatas.db.map((db) => (
+                <Icon key={db} src={db} alt="뱃지" />
+              ))
+            }
+          </IconWrap>
 
-    <ProjectSubTitle>주요기능 미리보기</ProjectSubTitle>
-    <Content>
-      <TextWrap>
-        <BlockContent blocks={projectDatas.contents} projectId={process.env.SANITY_PROJECT_ID} dataset="production" />
-      </TextWrap>
+          <IconWrap>
+            <StackName>Hosting</StackName>
+            {
+              projectDatas.hosting.map((hosting) => (
+                <Icon key={hosting} src={hosting} alt="뱃지" />
+              ))
+            }
+          </IconWrap>
+        </Content>
 
-      <Preview>
-        <Thumbnail>
-          {
-            projectDatas.thumbnail.map((thumbnail) => (
-              <ThumbnailImg key={thumbnail} src={thumbnail} alt="썸네일"  />
-            ))
-          }
-        </Thumbnail>
-        <BriefDes>
-        {
-          projectDatas.des.map((data: any) => (
-            <DesWrap key={data.subtitle}>
-              <Subtitle>{data.subtitle}</Subtitle>
-              <BriefInfo>
-                {data.briefDes1}
-              </BriefInfo>
-              <BriefInfo>
-                {data.briefDes2}
-              </BriefInfo>
-              <BriefInfo>
-                {data.briefDes3}
-              </BriefInfo>
-            </DesWrap>
-          ))
-        }
-        </BriefDes>
-      </Preview>
+        <ProjectSubTitle>주요기능 미리보기</ProjectSubTitle>
+        <Content>
+          <TextWrap>
+            <BlockContent blocks={projectDatas.contents} projectId={process.env.SANITY_PROJECT_ID} dataset="production" />
+          </TextWrap>
+
+          <Preview>
+            <Thumbnail>
+              {
+                projectDatas.thumbnail.map((thumbnail) => (
+                  <ThumbnailImg key={thumbnail} src={thumbnail} alt="썸네일"  />
+                ))
+              }
+            </Thumbnail>
+            <BriefDes>
+            {
+              projectDatas.des.map((data: any) => (
+                <DesWrap key={data.subtitle}>
+                  <Subtitle>{data.subtitle}</Subtitle>
+                  <BriefInfo>
+                    {data.briefDes1}
+                  </BriefInfo>
+                  <BriefInfo>
+                    {data.briefDes2}
+                  </BriefInfo>
+                  <BriefInfo>
+                    {data.briefDes3}
+                  </BriefInfo>
+                </DesWrap>
+              ))
+            }
+            </BriefDes>
+          </Preview>
 
 
-    </Content>
+        </Content>
 
-    <ProjectSubTitle></ProjectSubTitle>
-    <Content>
-      <TextWrap>
-        <BlockContent blocks={impression} projectId={process.env.SANITY_PROJECT_ID} dataset="production" />
-      </TextWrap>
-    </Content>
+        <ProjectSubTitle></ProjectSubTitle>
+        <Content>
+          <TextWrap>
+            <BlockContent blocks={impression} projectId={process.env.SANITY_PROJECT_ID} dataset="production" />
+          </TextWrap>
+        </Content>
 
-  </ContentSection>
+      </ContentSection>
+    </>
   )
 }
 
