@@ -10,6 +10,7 @@ interface DetailProps {
 }
 
 export default function ProjectDetail({projectDatas, impression}: DetailProps) {
+
   return (
     <>
       <Head>
@@ -124,12 +125,46 @@ export default function ProjectDetail({projectDatas, impression}: DetailProps) {
 
         </Content>
 
-        <ProjectSubTitle></ProjectSubTitle>
+        <ProjectSubTitle>후기 및 개선방향</ProjectSubTitle>
         <Content>
           <TextWrap>
             <BlockContent blocks={impression} projectId={process.env.SANITY_PROJECT_ID} dataset="production" />
           </TextWrap>
         </Content>
+
+        {
+          projectDatas.thumbnailAdd && projectDatas.desAdd 
+          ?
+          <>
+            <ProjectSubTitle>❗️ 이런 기능이 추가되었어요!</ProjectSubTitle>
+            <Content>
+              <Preview>
+                <Thumbnail>
+                  {
+                    projectDatas.thumbnailAdd.map((thumbnailAdd) => (
+                      <ThumbnailImg key={thumbnailAdd} src={thumbnailAdd} alt="썸네일"  />
+                    ))
+                  }
+                </Thumbnail>
+                <BriefDes>
+                {
+                  projectDatas.desAdd.map((desAdd: any) => (
+                    <DesWrap key={desAdd.subtitle}>
+                      <Subtitle>{desAdd.subtitle}</Subtitle>
+                      <BriefInfo>
+                        {desAdd.briefDes1}
+                      </BriefInfo>
+                    </DesWrap>
+                  ))
+                }
+                </BriefDes>
+              </Preview>
+            </Content>
+          </>
+          :
+          <ProjectSubTitle></ProjectSubTitle>
+        }
+
 
       </ContentSection>
     </>

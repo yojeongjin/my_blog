@@ -60,6 +60,11 @@ export default class SanityService {
         'briefDes1': des,
         'briefDes2': des2,
         'briefDes3': des3
+      },
+      'thumbnailAdd': thumbnailAdd[] -> image.asset -> url,
+      'desAdd': desAdd[] -> {
+        'subtitle': subtitle,
+        'briefDes1': des,
       }
       }
     `)
@@ -70,6 +75,7 @@ export default class SanityService {
     *[_type == 'post'] | order(_createdAt asc){
       title,
       period,
+      desc,
       desc1,
       desc2,
       desc3,

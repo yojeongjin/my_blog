@@ -13,14 +13,14 @@ export default function Project({project}: ProjectProps) {
       {
         project.slug === 'arcade' 
         ?
-        <Link href='/arcade'>
+        <Link href='/project/arcade'>
           <ProjectImgWrap>
             <ProjectImg src={project.thumbnail} alt="썸네일" />
           </ProjectImgWrap>
         </Link>
         : project.slug === 'portfolio'
         ?
-        <Link href='/portfolio'>
+        <Link href='/project/portfolio'>
           <ProjectImgWrap>
             <ProjectImg src={project.thumbnail} alt="썸네일" />
           </ProjectImgWrap>
@@ -35,7 +35,9 @@ export default function Project({project}: ProjectProps) {
       <ProjectDescription>
         <Title>
           {project.title}
-          <SubTitle>{project.period}</SubTitle>
+          <SubTitle>
+            {project.period} &nbsp; {project.desc}
+          </SubTitle>
         </Title>
         <StackIconWrap>
           <div>
@@ -64,7 +66,7 @@ export default function Project({project}: ProjectProps) {
 
   return (
     <ContentSection>
-      {/* <ContetnSectionTitle>각 썸네일을 클릭하면 자세히 볼 수 있어요!</ContetnSectionTitle> */}
+      <ContetnSectionTitle> 각 썸네일을 클릭하면 자세히 볼 수 있어요!</ContetnSectionTitle>
       {ProjectDetail}
     </ContentSection>
   )
@@ -81,7 +83,9 @@ flex-direction: column;
 
 const ContetnSectionTitle = styled.div`
 color: ${(props) => props.theme.contentTitleColor};
+width: 100%;
 margin-bottom: 14px;
+padding: 0 150px;
 `
 
 const ProjectCardWrap = styled.div`

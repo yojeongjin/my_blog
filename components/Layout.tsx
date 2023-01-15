@@ -65,7 +65,8 @@ export default function Layout({children}:LayoutProps) {
                 </Link>
               </HeaderItem>
               
-              <HeaderItem isSelect = {router.pathname === "/post"}>
+              <HeaderItem isSelect = {router.pathname === "/post" || router.pathname === "/project/[slug]" 
+            || router.pathname === "/project/arcade" || router.pathname === "/project/portfolio"}>
                 <Link href='/post'>
                   Projects
                 </Link>

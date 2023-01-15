@@ -1,8 +1,8 @@
 import { GetStaticProps } from "next"
 import Head from "next/head"
-import Layout from "../components/Layout"
-import PortfolioDetail from "../components/PortfolioDetail"
-import SanityService from "../service/SanityService"
+import Layout from "../../components/Layout"
+import PortfolioDetail from "../../components/PortfolioDetail"
+import SanityService from "../../service/SanityService"
 
 export default function Portfolio({portfolio}) {
   const portfolioData = portfolio[0]

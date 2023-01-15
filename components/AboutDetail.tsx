@@ -9,7 +9,7 @@ export default function AboutDetail({about}) {
 
   const contentsDetail = 
   about.map((about, idx) => (
-    <Content key={idx} isTag = {tag === idx}>
+    <Content key={about.tag} isTag = {tag === idx}>
       <Title>{about.title}</Title>
       <Text>
         <BlockContent blocks={about.contents} projectId={process.env.SANITY_PROJECT_ID} dataset="production" />
@@ -154,4 +154,5 @@ const Text = styled.div`
 font-weight: 400;
 padding: 0 30px;
 font-size: 14px;
+overflow-y: scroll;
 `
