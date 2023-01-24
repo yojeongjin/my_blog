@@ -196,7 +196,33 @@ border-radius: 14px;
 border: 1px solid ${(props) => props.theme.bgColor};
 cursor: pointer;
 `
+
+const DropDown = styled.button<{drop: boolean}>`
+position: absolute;
+top: 0;
+height: 100%;
+padding: 10px 18px;
+border-radius: 0 24px 24px 0;
+background: ${(props) => props.theme.dropdownBg};
+transition: all 0.4s ease;
+font-size: 12px;
+opacity: 0;
+// display: ${(props) =>  props.drop ? 'show' : 'none'};
+&:hover{
+  background-color: ${(props) => props.theme.dropdownHover};
+}
+`
+const Category = styled.span`
+width: 75%;
+position: relative;
+display: inline-block;
+font-size: 14px;
+font-weight: 400;
+text-overflow: ellipsis;
+`
+
 const ContentItem = styled.li`
+position: relative;
 padding: 10px 18px;
 display: flex;
 align-items: center;
@@ -204,14 +230,19 @@ font-size: 16px;
 width: 100%;
 height: 100%;
 white-space: nowrap;
-transition: 0.3s;
+transition: all 500ms;
 &:hover {
   background-color: ${(props) => props.theme.bgColor};
+  transform: translateX(-35px);
   &:first-child {
     border-radius: 13px 13px 0 0;
    }
    &:last-child {
     border-radius: 0 0 13px 13px;
+   }
+   ${DropDown} {
+    opacity: 1;
+    width: 8%;
    }
 }
 & + li {
@@ -219,25 +250,18 @@ transition: 0.3s;
 }
 `
 
+
 const Stacks = styled.div`
 display: flex;
 align-items: center;
-width: 25%;
+width: 20%;
 `
 
 const StacksIcon = styled.img`
 width: 22px;
 height: 22px;
 margin-right: 10px;
-`
 
-const Category = styled.span`
-width: 70%;
-position: relative;
-display: inline-block;
-font-size: 13px;
-font-weight: 400;
-text-overflow: ellipsis;
 `
 
 const DropDownWrap = styled.div`
@@ -245,9 +269,6 @@ width: 5%;
 display: flex;
 justify-content: flex-end;
 padding: 7px 0;
-&:hover {
-  scale: 1.1;
-}
 `
 
 const DropDownMenu = styled.div`
@@ -257,21 +278,6 @@ background-color: ${(props) => props.theme.buttonInactive};
 border-radius: 50%;
 box-shadow: 7px 0 0 0 ${(props) => props.theme.buttonInactive}, 14px 0 0 0 ${(props) => props.theme.buttonInactive};
 margin: 0 12px;
-`
-
-const DropDown = styled.button<{drop: boolean}>`
-position: relative;
-top: 10px;
-right: 30px;
-padding: 7px 20px;
-border-radius: 15px;
-background: ${(props) => props.theme.dropdownBg};
-transition: all 0.4s ease;
-font-size: 12px;
-display: ${(props) =>  props.drop ? 'show' : 'none'};
-&:hover{
-  background-color: ${(props) => props.theme.dropdownHover};
-}
 `
 
 const StackCardWrap = styled.div`

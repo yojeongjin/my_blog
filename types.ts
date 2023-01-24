@@ -17,7 +17,8 @@ export type ProjectDetailType = {
   thumbnail: string[]
   des: [],
   thumbnailAdd: string[],
-  desAdd: string[]
+  desAdd: string[],
+  contentsAdd: string[]
 }
 
 export type ArcadeType = {

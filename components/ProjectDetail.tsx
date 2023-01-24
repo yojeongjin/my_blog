@@ -133,11 +133,15 @@ export default function ProjectDetail({projectDatas, impression}: DetailProps) {
         </Content>
 
         {
-          projectDatas.thumbnailAdd && projectDatas.desAdd 
+          projectDatas.thumbnailAdd && projectDatas.title !== "Theine"
           ?
           <>
             <ProjectSubTitle>❗️ 이런 기능이 추가되었어요!</ProjectSubTitle>
             <Content>
+              <TextWrap>
+                <BlockContent blocks={projectDatas.contentsAdd} projectId={process.env.SANITY_PROJECT_ID} dataset="production" />
+              </TextWrap>
+
               <Preview>
                 <Thumbnail>
                   {
@@ -154,6 +158,9 @@ export default function ProjectDetail({projectDatas, impression}: DetailProps) {
                       <BriefInfo>
                         {desAdd.briefDes1}
                       </BriefInfo>
+                      <BriefInfo>
+                        {desAdd.briefDes2}
+                      </BriefInfo>
                     </DesWrap>
                   ))
                 }
@@ -162,7 +169,35 @@ export default function ProjectDetail({projectDatas, impression}: DetailProps) {
             </Content>
           </>
           :
-          <ProjectSubTitle></ProjectSubTitle>
+          <>
+            <ProjectSubTitle>❗️ 결제 시연 영상</ProjectSubTitle>
+            <Content>
+              <TextWrap>
+                <BlockContent blocks={projectDatas.contentsAdd} projectId={process.env.SANITY_PROJECT_ID} dataset="production" />
+              </TextWrap>
+              <AddThumbnail>
+                <ThumbnailImg style={{height: "auto"}} src={projectDatas.thumbnailAdd[0]} alt="썸네일" />
+              </AddThumbnail>
+              <BriefDes>
+                {
+                  projectDatas.desAdd.map((desAdd: any) => (
+                    <DesWrap key={desAdd.subtitle}  style={{height: "auto"}}>
+                      <Subtitle>{desAdd.subtitle}</Subtitle>
+                      <BriefInfo>
+                        {desAdd.briefDes1}
+                      </BriefInfo>
+                      <BriefInfo>
+                        {desAdd.briefDes2}
+                      </BriefInfo>
+                    </DesWrap>
+                  ))
+                }
+              </BriefDes>
+              <AddThumbnail>
+                <ThumbnailImg style={{height: "auto"}} src={projectDatas.thumbnailAdd[1]} alt="썸네일" />
+              </AddThumbnail>
+            </Content>
+          </>
         }
 
 
@@ -218,7 +253,7 @@ padding: 15px 20px;
 
 const TextWrap = styled.div`
 padding: 13px 25px;
-font-size: 14px;
+font-size: 15px;
 font-weight: 400;
 line-height: 1.5;
 `
@@ -252,6 +287,10 @@ const Thumbnail = styled.div`
 width: 550px;
 `
 
+const AddThumbnail = styled.div`
+
+`
+
 const ThumbnailImg = styled.img`
 width: 100%;
 height: 235px;
@@ -281,7 +320,7 @@ margin-bottom: 5px;
 const BriefInfo = styled.p`
 padding: 0 5px;
 line-height: 1.4;
-margin-bottom: 3px;
+margin-bottom: 5px;
 `
 
 const Preview = styled.div`

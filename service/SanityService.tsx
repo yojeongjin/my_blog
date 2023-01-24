@@ -65,7 +65,9 @@ export default class SanityService {
       'desAdd': desAdd[] -> {
         'subtitle': subtitle,
         'briefDes1': des,
-      }
+        'briefDes2': des2,
+      },
+      'contentsAdd': contentsAdd[]
       }
     `)
   }
