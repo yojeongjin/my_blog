@@ -6,7 +6,7 @@ import { useState } from "react"
 export default function AboutDetail({about}) {
   const [ select, setSelect ] = useState(1)
   const [ tag, setTag ] = useState(0)
-
+ 
   const contentsDetail = 
   about.map((about, idx) => (
     <Content key={about.tag} isTag = {tag === idx}>
