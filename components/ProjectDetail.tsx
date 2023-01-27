@@ -10,7 +10,6 @@ interface DetailProps {
 }
 
 export default function ProjectDetail({projectDatas, impression}: DetailProps) {
-
   return (
     <>
       <Head>

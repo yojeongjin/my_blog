@@ -26,15 +26,11 @@ export default function AboutDetail({about}) {
           <AboutItem
           isSelect = {select === 1}
           onClick = {()=>{setSelect(1), setTag(0)}}
-          >자기 소개</AboutItem>
+          >INTRODUCE</AboutItem>
           <AboutItem
           isSelect = {select === 2}
           onClick = {()=>{setSelect(2), setTag(1)}}
-          >이직 이유</AboutItem>
-          <AboutItem
-          isSelect = {select === 3}
-          onClick = {()=>{setSelect(3), setTag(2)}}
-          >앞으로</AboutItem>
+          >CONTACT</AboutItem>
         </AboutList>
       </LeftSide>
 
@@ -89,7 +85,6 @@ display: flex;
 line-height: 34px;
 color: ${(props) => props.isSelect ? props.theme.themeColor : props.theme.contentTitleColor};
 // color: ${(props) => props.theme.themeColor};
-font-weight: 500;
 cursor: pointer;
 transition: all .2s ease-out;
 &:hover {
@@ -112,11 +107,9 @@ height: 50px;
 background-color: #E74C3C;
 margin-left: -2px;
 // margin-top: 50px;
-margin-top: ${(props) => props.isSelect === 1 ? '50px'
+margin-top: ${(props) => props.isSelect === 1 ? '80px'
 : props.isSelect === 2
-? '114px'
-: props.isSelect === 3
-? '177px'
+? '145px'
 : '0'
 };
 transition: all .4s ease-in-out;
